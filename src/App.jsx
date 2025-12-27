@@ -3,7 +3,7 @@ import React from 'react'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import Layout from './components/Layout.jsx'
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound.jsx';
 
 export default function App() {
   return (
