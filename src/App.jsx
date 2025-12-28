@@ -1,5 +1,4 @@
 import { Routes, Route, Link } from 'react-router-dom'
-import React from 'react'
 import Home from './pages/Home.jsx'
 import Work from './pages/Work.jsx'
 import WorkGraph from './pages/WorkGraph.jsx'
@@ -14,7 +13,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="work" element={<Work />} />
         <Route path="work/graph" element={<WorkGraph />} />
-        <Route path="concact" element={<Contact />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
