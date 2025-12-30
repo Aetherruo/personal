@@ -1,3 +1,4 @@
+{/* sudah selesai, AllProviders next */}
 import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import Work from './pages/Work.jsx'
