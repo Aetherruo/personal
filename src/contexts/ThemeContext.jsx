@@ -1,6 +1,6 @@
 {/* harus dipelajari, awalnya karena ingin ada theme */}
 import { createContext, useEffect } from 'react';
-import { useThemeInternal } from './useTheme'; 
+import { useThemeInternal } from './useTheme.jsx'; 
 
 const ThemeContext = createContext();
 
