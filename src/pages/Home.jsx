@@ -1,14 +1,16 @@
 import Seo from '../components/Seo';
+import Styles from '../styles/home.module.css';
 
 export default function Home() {
   return (
     <>
       <Seo 
         title="Beranda" 
-        description="Selamat datang di website kami" 
-        image="/og-home.jpg"
       />
-      <h1>Selamat Datang di Beranda</h1>
+      <div className="{Styles.First}">
+        <h2>Halo, Saya Ali Rahman</h2>
+        <p>Selamat datang di portofolio saya!</p>
+      </div>
     </>
   );
 }

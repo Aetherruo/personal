@@ -1,6 +1,5 @@
-{/* harus dipelajari, awalnya karena ingin ada theme */}
-import { useContext, useState } from 'react'
-import { ThemeContext } from './ThemeContext'
+import { useContext, useState, useEffect } from 'react';
+import { ThemeContext } from './ThemeContext.jsx';
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return 'light';
@@ -9,6 +8,12 @@ const getInitialTheme = () => {
 
 export const useThemeInternal = () => {
   const [theme, setTheme] = useState(() => getInitialTheme());
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
   return { theme, setTheme };
 };
 

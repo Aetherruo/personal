@@ -1,19 +1,17 @@
-{/* harus dipelajari, awalnya karena ingin ada theme */}
-import { createContext, useEffect } from 'react';
+import { createContext } from 'react';
 import { useThemeInternal } from './useTheme.jsx'; 
 
-const ThemeContext = createContext();
+export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const { theme, setTheme } = useThemeInternal();
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme: () => setTheme(t => t === 'light' ? 'dark' : 'light') }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

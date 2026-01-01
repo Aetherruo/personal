@@ -10,13 +10,13 @@ import NotFound from './pages/NotFound.jsx';
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="work" element={<Work />} />
         <Route path="work/graph" element={<WorkGraph />} />
         <Route path="contact" element={<Contact />} />
+        
       </Route>
-
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
