@@ -1,4 +1,41 @@
+/* src/styles/global.css */
 
-:root {
-  --font-size-3: 1px; 
+/* Reset margin/padding default */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* hindari scroll horizontal jika background lebar */
+}
+
+/* Container utama React (biasanya #root) */
+#root {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Background global: di belakang SEMUA */
+#root::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/tampa.png'); /* ganti path-nya */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* efek parallax jika diinginkan */
+  z-index: -1; /* di belakang semua konten */
+  opacity: 0.2; /* sesuaikan agar tidak mengganggu teks */
+}
+/* Nonaktifkan background hanya saat class 'no-background' ada di body */
+body.no-background #root::before {
+  display: none;
+}
+
+/* Sembunyikan background hanya di halaman not found */
+.not-found-page #root::before {
+  display: none !important;
 }

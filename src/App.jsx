@@ -19,7 +19,11 @@ export default function App() {
         <Route path="work/graph" element={<WorkGraph />} />
         <Route path="contact" element={<Contact />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
+        <Route path="*" element={
+          <div className="not-found-page">
+            <NotFound />
+          </div>
+        } />
     </Routes>
   )
 }
