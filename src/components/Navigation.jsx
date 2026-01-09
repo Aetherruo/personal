@@ -2,12 +2,33 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../contexts/useTheme';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import linkedin from '../assets/linkedin.png';
+import themeIcon from '../assets/theme.svg';
 import docs from '../assets/docs.svg';
 import heart from '../assets/heart.svg';
+import { useEffect, useState } from 'react';
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+  const [pstTime, setPstTime] = useState('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const formatted = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Los_Angeles',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      }).format(now);
+      setPstTime(formatted);
+    };
+
+    updateTime();
+    const intervalId = setInterval(updateTime, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -15,20 +36,38 @@ export default function Navigation() {
     { name: 'Contact', path: '/contact' },
   ];
 
-  // Ganti dengan URL asli milikmu
   const linkedinUrl = 'https://linkedin.com/in/your-profile';
   const docsUrl = 'https://docs.yoursite.com';
-  const donateUrl = 'https://ko-fi.com/donrahman'; // atau platform donasi lain
+  const donateUrl = 'https://ko-fi.com/donrahman';
 
   return (
     <header
       style={{
-        backgroundColor: theme === 'light' ? '#ffffff' : '#121212',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0, 
+        backgroundColor: 'transparent',
         color: theme === 'light' ? '#000000' : '#ffffff',
         padding: '1rem 2rem',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+
+        zIndex: 1000,
+
       }}
     >
+      {/* Display PST time in top-right corner */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '0.5rem',
+          right: '7rem',
+          fontSize: '0.875rem',
+          opacity: 0.8,
+        }}
+      >
+        {pstTime} PST
+      </div>
+
       <div
         style={{
           display: 'flex',
@@ -57,9 +96,12 @@ export default function Navigation() {
                 <Link
                   to={item.path}
                   style={{
-                    color: location.pathname === item.path
-                      ? (theme === 'light' ? '#007bff' : '#4da6ff')
-                      : 'inherit',
+                    color:
+                      location.pathname === item.path
+                        ? theme === 'light'
+                          ? '#ff0000ff'
+                          : '#ff4d4dff'
+                        : 'inherit',
                     textDecoration: 'none',
                     fontWeight: location.pathname === item.path ? 'bold' : 'normal',
                     padding: '0.25rem 0',
@@ -72,9 +114,7 @@ export default function Navigation() {
           </ul>
         </nav>
 
-        {/* Right-aligned action buttons */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          {/* LinkedIn Icon */}
           <a
             href={linkedinUrl}
             target="_blank"
@@ -92,12 +132,10 @@ export default function Navigation() {
               style={{
                 width: '24px',
                 height: '24px',
-                filter: theme === 'dark' ? 'invert(1)' : 'none', // optional: adjust for dark mode
               }}
             />
           </a>
 
-          {/* Docs Button */}
           <a
             href={docsUrl}
             target="_blank"
@@ -120,7 +158,6 @@ export default function Navigation() {
             Docs
           </a>
 
-          {/* Donate Button */}
           <a
             href={donateUrl}
             target="_blank"
@@ -129,7 +166,7 @@ export default function Navigation() {
               display: 'flex',
               alignItems: 'center',
               gap: '0.25rem',
-              background: '#dc3545', // merah Bootstrap-style
+              background: '#dc3545',
               color: '#ffffff',
               border: 'none',
               borderRadius: '4px',
@@ -143,20 +180,25 @@ export default function Navigation() {
             <img src={heart} alt="" style={{ width: '16px', height: '16px' }} />
           </a>
 
-          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             style={{
               background: 'none',
               border: 'none',
-              fontSize: '1.25rem',
               cursor: 'pointer',
               padding: '0.25rem',
               borderRadius: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            {theme === 'light' ? '🌙' : '☀️'}
+            <img
+              src={themeIcon}
+              alt=""
+              style={{ width: '20px', height: '20px', display: 'block' }}
+            />
             <VisuallyHidden.Root>
               {`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             </VisuallyHidden.Root>
