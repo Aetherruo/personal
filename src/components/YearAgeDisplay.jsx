@@ -8,7 +8,7 @@ export default function YearAgeDisplay() {
   useEffect(() => {
     const calculateAge = () => {
       const today = new Date();
-      const birthDate = new Date(2008, 2, 16); // 16 Maret 2008 (Maret = bulan ke-2)
+      const birthDate = new Date(2008, 2, 16); // 16 Maret 2008
 
       let calculatedAge = today.getFullYear() - birthDate.getFullYear();
       const monthDiff = today.getMonth() - birthDate.getMonth();
@@ -23,7 +23,7 @@ export default function YearAgeDisplay() {
     };
 
     calculateAge();
-    const interval = setInterval(calculateAge, 60000); // update tiap menit
+    const interval = setInterval(calculateAge, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -46,15 +46,19 @@ export default function YearAgeDisplay() {
         gap: '6px',
         alignItems: 'center',
         userSelect: 'none',
+
+        // --- Animasi CSS inline ---
+        opacity: 0,
+        transform: 'translateY(20px)',
+        animation: 'fadeInUp 0.6s ease-out forwards',
       }}
     >
       <span>2008</span>
       <span>—</span>
-      {/* Bagian tengah dibuat lebih menonjol */}
       <span
         style={{
           fontWeight: '700',
-          color: 'var(--color-accent, #FF6B6B)', // fallback warna jika --color-accent tidak ada
+          color: 'var(--color-accent, #FF6B6B)',
           padding: '0 4px',
           letterSpacing: '0.5px',
         }}
@@ -63,6 +67,20 @@ export default function YearAgeDisplay() {
       </span>
       <span>—</span>
       <span>{currentYear}</span>
+
+      {/* Definisi keyframe animasi via <style> di dalam komponen */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 }
