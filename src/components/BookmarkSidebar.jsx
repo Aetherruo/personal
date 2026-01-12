@@ -16,6 +16,7 @@ const bookmarks = [
 export default function BookmarkSidebar() {
   return (
     <div
+      className="bookmark-sidebar-scroll"
       style={{
         width: '30%',
         minWidth: '250px',

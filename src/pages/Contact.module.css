@@ -1,0 +1,78 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  flex-direction: column; /* ← tambahkan ini! */
+  gap: 1.5rem; /* opsional: jarak antara card dan notice */
+}
+
+.card {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 28rem;
+  width: 100%;
+  text-align: center;
+  color: var(--text-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profileImage {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 0.75rem;
+  border: 4px solid #fbbf24;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.name {
+  font-size: 1.875rem; /* = 30px */
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  
+}
+
+.iconLink {
+  transition: opacity 0.25s ease;
+  display: inline-block;
+}
+
+.iconLink:hover {
+  opacity: 0.85;
+}
+/* Contact.module.css */
+.notice {
+  text-align: center;
+  margin-top: 0; /* tidak perlu jika pakai gap di container */
+  font-size: 1rem;
+}
+/* Responsivitas */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.5rem; /* sedikit lebih kecil di mobile */
+  }
+
+  .profileImage {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}

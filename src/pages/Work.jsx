@@ -43,13 +43,7 @@ export default function Work() {
           <img src={warningIcon} alt="Warning" className={styles.warningIcon} />
            ‎ Identitas
         </h2>
-        <p>Ali Rahman (علي رحمن; lahir 16 Maret 2008) adalah pebisnis, inovator dan anggota partai politik Gelora Indonesia di daerah Kab. Banjar dari 2025 hingga 2026.
-            Ali adalah salah satu dari sekian banyak orang yang berusaha menjadi inovator dari negara Indonesia untuk mendukung kesatuan negara republik Indonesia dan kepentingan global.
-        </p>
-        <p>
-          Ali merupakan anak bungsu dari keluarganya yang merupakan asli orang Samarinda dan merupakan keturunan Syekh Muhammad Arsyad al-Banjari dari jalur ibunya.
-          Ia pernah belajar di pondok pesantren Darussalam selama 4 tahun dengan kelas H nomor induk 58451, dan pada tahu 2024 ia keluar dari jalur pendidikan agama karena sadar akan tidak tepatnya untuk menjalani dijalur pendidikan agama, ia lalu mengambil jalur kembali bersekolah formal kejuruan dengan jurusan teknik komputer dan jaringan.
-          
+        <p>Ali Rahman (علي رحمن) adalah pengusaha muda dan Founder & CEO PT Kaji Mulia Rahman, perusahaan pengembang aplikasi berbasis di Indonesia. Ia juga aktif sebagai anggota Partai Gelora Indonesia di Kabupaten Banjar dan mengembangkan proyek personal branding melalui platform digital.
         </p>
         <h2 className={styles.noticeHeader}> 
           <span className={styles.divider}></span>
@@ -86,6 +80,21 @@ export default function Work() {
             alt="number" 
             style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} 
           /> Nomor KTA: 630305100220
+          </p>
+           <p>
+          ● Januari 2026 ~ Sekarang,
+          Perkumpulan Insan Katiga Mandiri<br/>
+          Perkumpulan Insan Katiga Mandiri merupakan komunitas kompetensi K3 melalui pendidikan, pelatihan, dan kegiatan sosial.<br/>
+         <img 
+            src={Star} 
+            alt="Star" 
+            style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} 
+          />Menjabat sebagai Anggota
+          ‎<img 
+            src={number} 
+            alt="number" 
+            style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} 
+          /> Nomor Anggota: IKM20260081
           </p>
         </section>
         <h2 className={styles.noticeHeader}> 
@@ -330,6 +339,12 @@ export default function Work() {
             <td>Universitas Ciputra </td>
             <td>Participant</td>
           </tr>
+          <tr>
+            <td>2026</td>
+            <td>National Nutrition Research Nourish Competition 2026</td>
+            <td>Institut Ilmu Kesehatan Nahdlatul Ulama Tuban </td>
+            <td>Participant</td>
+          </tr>
           {/* Tambahkan baris lain sesuai kebutuhan */}
         </tbody>
       </table>
@@ -337,13 +352,13 @@ export default function Work() {
         <p>
           Senang sekali bila ada yang meluangkan waktu membaca riwayat profesional, atau mungkin lebih tepat disebut semi-profesional punya saya. Saya terbuka untuk peluang di posisi yang relevan ataupun hal baru dibidang yang berbeda. Jika tertarik berdiskusi lebih lanjut, silakan menghubungi saya melalui halaman berikutnya. </p>
          <div className={styles.NavButton_UniqueContainer_2026}>
-      <div className={styles.NavButton_TextGroup_LeftAligned_8a3f}>
-        <span className={styles.NavButton_Title_NextLabel_c9e7}>Next</span>
-        <a href="/contact" className={styles.NavButton_Link_GettingStarted_d2b1}>
-          Contact Me »
-        </a>
-      </div>
-    </div>
+          <div className={styles.NavButton_TextGroup_LeftAligned_8a3f}>
+            <span className={styles.NavButton_Title_NextLabel_c9e7}>Next</span>
+            <a href="/contact" className={styles.NavButton_Link_GettingStarted_d2b1}>
+              Contact Me »
+            </a>
+          </div>
+        </div>
         
       </div>
     </>

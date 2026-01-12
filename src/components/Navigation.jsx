@@ -6,23 +6,24 @@ import themeIcon from '../assets/theme.svg';
 import docs from '../assets/docs.svg';
 import heart from '../assets/heart.svg';
 import { useEffect, useState } from 'react';
+import home from '../assets/home.svg';
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
-  const [pstTime, setPstTime] = useState('');
+  const [awstTime, setAwstTime] = useState('');
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const formatted = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Los_Angeles',
-        hour: '2-digit',
+      const formatted = new Intl.DateTimeFormat('en-AU', {
+        timeZone: 'Australia/Perth',
+        hour: 'numeric',
         minute: '2-digit',
         second: '2-digit',
-        hour12: false,
+        hour12: true,
       }).format(now);
-      setPstTime(formatted);
+      setAwstTime(formatted);
     };
 
     updateTime();
@@ -46,28 +47,13 @@ export default function Navigation() {
         position: 'fixed',
         top: 0,
         left: 0,
-        right: 0, 
+        right: 0,
         backgroundColor: 'transparent',
         color: theme === 'light' ? '#000000' : '#ffffff',
         padding: '1rem 2rem',
-
         zIndex: 1000,
-
       }}
     >
-      {/* Display PST time in top-right corner */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '0.5rem',
-          right: '7rem',
-          fontSize: '0.875rem',
-          opacity: 0.8,
-        }}
-      >
-        {pstTime} PST
-      </div>
-
       <div
         style={{
           display: 'flex',
@@ -75,11 +61,58 @@ export default function Navigation() {
           alignItems: 'center',
           maxWidth: '1200px',
           margin: '0 auto',
+          position: 'relative', // ← penting untuk posisi absolut waktu
         }}
       >
-        <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-          Bienvenue <span style={{ fontSize: '0.8rem' }}>(byan-vuh-nu)!🎉</span>
-        </h1>
+        {/* Waktu diposisikan di atas container, rata kanan */}
+        <div
+          style={{
+            position: 'absolute',
+            top: '-1rem',
+            right: 0,
+            fontSize: '0.875rem',
+            opacity: 0.8,
+            fontFamily: 'monospace',
+            pointerEvents: 'none', // mencegah gangguan klik
+          }}
+        >
+          {awstTime} AWST
+        </div>
+
+        <Link
+          to="/"
+          style={{
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            color: theme === 'light' ? '#000000' : '#ffffff',
+            textDecoration: 'none',
+            padding: '0.25rem 0.5rem',
+            borderRadius: '4px',
+            border: '1px solid transparent',
+            transition: 'border-color 0.2s ease',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor =
+              theme === 'light' ? '#00000033' : '#ffffff33';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = 'transparent';
+          }}
+        >
+          <img
+            src={home}
+            alt=""
+            style={{
+              width: '18px',
+              height: '18px',
+              display: 'block',
+            }}
+          />
+          Rahman Sites
+        </Link>
 
         <nav>
           <ul
