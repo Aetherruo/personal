@@ -11,7 +11,7 @@ import Url from '../assets/url.svg'
 import Competition from '../assets/competition.svg'
 import number from '../assets/number.svg'
 import project from '../assets/project.svg'
-
+import organizations from '../assets/organizations.svg'
 export default function Work() {
   const textRef = useRef(null);
 
@@ -33,8 +33,8 @@ export default function Work() {
       <Helmet>
         <title>Ali Rahman</title>
         <meta name="robots" content="noindex" />
-        <meta name="description" content="blablalballa" />
-        <meta property="og:title" content="kdsfjaklfjskf" />
+        <meta property="og:title" content="Ali Rahman – Founder & CEO PT Kaji Mulia Rahman" />
+        <meta property="og:description" content="Tech entrepreneur, student developer, and active participant in national competitions & digital education initiatives from Banjarbaru, Indonesia." />
       </Helmet>
       <div className={styles.fadeOverlay}></div>
       <div className={styles.container} ref={textRef}>
@@ -66,7 +66,14 @@ export default function Work() {
             style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} 
           /> NIB: 0712250021851
           </p>
-          <p>
+        </section>
+        <h2 className={styles.noticeHeader}> 
+          <span className={styles.divider}></span>
+          <img src={organizations} alt="Organizations" className={styles.warningIcon} />
+           ‎ Organisasi
+        </h2>
+        <section className={styles.Title} aria-label="Predikat">
+        <p>
           ● Desember 2025 ~ Sekarang,
           Partai Politik Gelombang Rakyat Indonesia<br/>
           Partai Politik Provinsi Kalimantan Selatan daerah Kota Banjarbaru sekitarnya<br/>
@@ -96,6 +103,7 @@ export default function Work() {
             style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} 
           /> Nomor Anggota: IKM20260081
           </p>
+
         </section>
         <h2 className={styles.noticeHeader}> 
           <span className={styles.divider}></span>

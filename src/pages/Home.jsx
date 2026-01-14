@@ -104,7 +104,7 @@ export default function Home() {
         </p>
         <p>
           Aku sangat senang bisa mempunyai pengunjung, terutama dari Indonesia. Di negara kita ini masih banyak
-          orang yang belum memiliki personal website. Kuharap websiteku tidak mencolok—haha! Website ini sengaja kubuat
+          orang yang belum memiliki personal website. Kuharap websiteku tidak mencolok haha! Website ini sengaja kubuat
           sesimple mungkin, tetapi tetap rapi dan profesional.
         </p>
 
@@ -128,8 +128,7 @@ export default function Home() {
               <ComposableMap
                 projection="geoMercator"
                 projectionConfig={{ scale: 140, center: [0, 20] }}
-                width={900}
-                height={500}
+                style={{ width: '100%', height: 'auto', aspectRatio: '900 / 500' }}
               >
                 <Geographies geography={geoUrl}>
                   {({ geographies }) =>
@@ -297,7 +296,7 @@ export default function Home() {
   <div
     style={{
       display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
       gap: '1.25rem',
       maxWidth: '900px',
       margin: '0 auto',
@@ -452,7 +451,12 @@ export default function Home() {
   <div style={{ maxWidth: '800px', margin: '0 auto', border: '1px solid #e5e7eb', borderRadius: '12px', overflow: 'hidden' }}>
     <iframe
       src="https://www.wishsite.net/embed/crfpxrlp"
-      style={{ width: '100%', height: '600px', border: 'none' }}
+      style={{ 
+        width: '100%', 
+        height: '500px', 
+        border: 'none',
+        minHeight: '400px'
+      }}
       title="Wish List - Yayasan Tunarungu Kebaikan Rahman"
     ></iframe>
   </div>

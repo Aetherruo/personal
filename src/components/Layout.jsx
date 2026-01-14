@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/useTheme.jsx';
 import Navigation from './Navigation.jsx';
 import Footer from './Footer.jsx';
 import BookmarkSidebar from './BookmarkSidebar.jsx';
-import YearAgeDisplay from '../components/YearAgeDisplay.jsx'; // ← tambahkan ini
+import YearAgeDisplay from '../components/YearAgeDisplay.jsx';
 import "../styles/global.css";
 import "@radix-ui/themes/styles.css";
 
@@ -17,20 +17,12 @@ export default function Layout() {
       <Navigation />
       <BookmarkSidebar />
 
-      <main
-        style={{
-          marginLeft: '30%',
-          minWidth: '70%',
-          padding: '20px',
-          marginTop: '20px',
-          minHeight: 'calc(100vh - 140px)',
-        }}
-      >
+      <main className="layout-main">
         <Outlet />
       </main>
 
       <Footer />
-      <YearAgeDisplay /> {/* ← tampilkan di pojok kanan bawah */}
+      <YearAgeDisplay />
     </Theme>
   );
 }

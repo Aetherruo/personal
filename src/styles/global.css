@@ -1,31 +1,22 @@
-/* ============= RESET & LAYOUT ============= */
-/* Pastikan ini ada di file CSS yang di-import setelah @radix-ui/themes/styles.css */
-/* Di global.css atau theme.css */
 * {
   font-family: 'Mulish', sans-serif !important;
 }
-/* Reset margin/padding default */
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden; /* hindari scroll horizontal */
+  overflow-x: hidden;
 }
 
-/* Container utama React */
 #root {
   min-height: 100vh;
   position: relative;
 }
 
-
-
-/* Sembunyikan background hanya di halaman not found */
 body.no-background #root::before {
   display: none;
 }
-
-/* ============= VARIABEL WARNA (THEME CUSTOM) ============= */
 
 :root {
   --bg-color: transparent;
@@ -45,18 +36,14 @@ html[data-theme="dark"] {
   --primary-color: #4da6ff;
 }
 
-/* ============= TRANSISI GLOBAL ============= */
-
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ============= GAYA DASAR ============= */
-
 html,
 body,
 #root {
-  background-color: var(--bg-color); /* transparan */
+  background-color: var(--bg-color); 
   color: var(--text-color);
 }
 
@@ -86,43 +73,36 @@ button:hover {
   opacity: 0.8;
 }
 
-/* ============= OVERRIDE RADIX UI UNTUK TRANSPARANSI ============= */
-
-/* Radix UI menambahkan background solid — kita override jadi transparan */
 .rt-ThemeBody,
 .rt-BaseLayout {
   background-color: transparent !important;
 }
 
-/* Pastikan main, nav, footer juga transparan (kecuali card) */
 main,
 nav,
 footer {
   background-color: transparent;
 }
 
-/* Jika kamu pakai Card dari Radix, biarkan card-nya semi-transparan */
-/* Tapi ini opsional — sesuaikan dengan komponen yang kamu gunakan */
 [data-accent-color] .rt-Card,
 .rt-Card {
   background-color: var(--card-bg) !important;
-  backdrop-filter: blur(4px); /* efek glassmorphism (opsional) */
+  backdrop-filter: blur(4px); 
   border: 1px solid var(--border-color);
 }
 
-/* === CUSTOM SCROLLBAR: KOTAK & TIPIS === */
 body::-webkit-scrollbar {
-  width: 8px;               /* width of the entire scrollbar */
+  width: 8px;              
 }
 
 body::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255);        /* color of the tracking area */
+  background: rgb(255, 255, 255);       
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: gray;    /* color of the scroll thumb */
-  border-radius: 0px;       /* roundness of the scroll thumb */
-  border: 3px solid gray;  /* creates padding around scroll thumb */
+  background-color: gray;   
+  border-radius: 0px;       
+  border: 3px solid gray;  
 }
 
 .unselectable {
@@ -132,23 +112,21 @@ body::-webkit-scrollbar-thumb {
   user-select: none;
 }
 
-/* Scrollbar khusus untuk sidebar bookmark */
 .bookmark-sidebar-scroll::-webkit-scrollbar {
   width: 8px;
 }
 
 .bookmark-sidebar-scroll::-webkit-scrollbar-track {
-  background: transparent; /* atau warna latar sesuai tema */
+  background: transparent;
 }
 
 .bookmark-sidebar-scroll::-webkit-scrollbar-thumb {
   background-color: var(--gray-a8);
   border-radius: 0px;
   border: 2px solid transparent;
-  background-clip: padding-box; /* agar border transparan terlihat sebagai padding */
+  background-clip: padding-box;
 }
 
-/* Opsional: hover effect */
 .bookmark-sidebar-scroll::-webkit-scrollbar-thumb:hover {
   background-color: var(--gray-a10);
 }
@@ -156,4 +134,30 @@ body::-webkit-scrollbar-thumb {
 .theme-icon {
   filter: var(--svg-filter, none);
   transition: filter 0.3s ease;
+}
+
+/* src/styles/global.css */
+
+.layout-main {
+  /* Desktop default */
+  margin-left: 30%;
+  min-width: 70%;
+  padding: 20px;
+  margin-top: 20px;
+  min-height: calc(100vh - 140px);
+}
+
+/* Mobile: hapus margin & isi penuh */
+@media (max-width: 767px) {
+  .layout-main {
+    margin-left: 0;
+    min-width: 100%;
+    width: 100%;
+    padding: 16px;
+    margin-top: 16px;
+    min-height: auto; /* opsional, sesuaikan jika perlu */
+  }
+
+  /* Opsional: sembunyikan sidebar di mobile jika perlu */
+  /* Tapi karena kamu tetap render <BookmarkSidebar />, pastikan ia disembunyikan via CSS juga */
 }

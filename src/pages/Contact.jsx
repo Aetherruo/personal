@@ -1,7 +1,5 @@
-// Contact.jsx
+// Contact.jsx (atau .tsx)
 import profileImg from '../assets/profile.png';
-
-// Import ikon
 import WhatsappIcon from '../assets/icons/whatsapp.svg';
 import LinkedInIcon from '../assets/icons/linkedin.png';
 import EmailIcon from '../assets/icons/email.png';
@@ -28,7 +26,7 @@ export default function Contact() {
             className={styles.iconLink}
             aria-label="WhatsApp"
           >
-            <img src={WhatsappIcon} alt="" width="24" height="24" />
+            <img src={WhatsappIcon} alt="" />
           </a>
           <a
             href="https://www.linkedin.com/in/ali-rahman-bjb/"
@@ -37,15 +35,14 @@ export default function Contact() {
             className={styles.iconLink}
             aria-label="LinkedIn"
           >
-            <img src={LinkedInIcon} alt="" width="24" height="24" />
+            <img src={LinkedInIcon} alt="" />
           </a>
           <a
             href="mailto:pesan@alirahman.my.id"
-            className={styles.iconLink}
+            className={`${styles.iconLink} ${styles.emailIcon}`}
             aria-label="Email"
           >
-            {/* Tinggi khusus 20px untuk email */}
-            <img src={EmailIcon} alt="" width="24" height="20" />
+            <img src={EmailIcon} alt="" />
           </a>
         </div>
       </div>
