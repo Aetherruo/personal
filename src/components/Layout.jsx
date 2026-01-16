@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/useTheme.jsx';
 import Navigation from './Navigation.jsx';
 import Footer from './Footer.jsx';
 import BookmarkSidebar from './BookmarkSidebar.jsx';
-import YearAgeDisplay from '../components/YearAgeDisplay.jsx';
+import YearAgeDisplay from './YearAgeDisplay.jsx';
 import "../styles/global.css";
 import "@radix-ui/themes/styles.css";
 

@@ -96,30 +96,65 @@ export default function Navigation() {
           >
             ✕
           </button>
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={closeMenu}
-              style={{
-                fontSize: '1.5rem',
-                fontWeight: location.pathname === item.path ? 'bold' : 'normal',
-                color:
-                  location.pathname === item.path
-                    ? theme === 'light'
-                      ? '#ff0000ff'
-                      : '#ff4d4dff'
-                    : theme === 'light'
-                    ? '#000'
-                    : '#fff',
-                textDecoration: 'none',
-              }}
-            >
-              {item.name}
-            </Link>
-          ))}
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={closeMenu}
+                  style={{
+                    fontSize: '1.5rem',
+                    fontWeight: location.pathname === item.path ? 'bold' : 'normal',
+                    color:
+                      location.pathname === item.path
+                        ? theme === 'light'
+                          ? '#ff0000ff'
+                          : '#ff4d4dff'
+                        : theme === 'light'
+                        ? '#000'
+                        : '#fff',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+               {/* Docs Button - Mobile Only */}
+                <a
+                  href={docsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  style={{
+                    fontSize: '1.25rem',
+                    fontWeight: 'bold',
+                    padding: '0.75rem 1.5rem',
+                    borderRadius: '8px',
+                    border: '1px solid',
+                    borderColor: theme === 'light' ? '#ccc' : '#555',
+                    backgroundColor: theme === 'light' ? '#f9f9f9' : '#1a1a1a',
+                    color: theme === 'light' ? '#000' : '#fff',
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      theme === 'light' ? '#eeeeee' : '#2a2a2a';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor =
+                      theme === 'light' ? '#f9f9f9' : '#1a1a1a';
+                  }}
+                >
+                  <img src={docs} alt="" style={{ width: '20px', height: '20px' }} />
+                  Docs
+                </a>
         </div>
       )}
+
+      
 
       {/* Header utama */}
       <header
@@ -158,10 +193,11 @@ export default function Navigation() {
           >
             {awstTime} AWST
           </div>
-
-          {/* Logo */}
+          
+          {/* Logo - Hanya di Desktop */}
           <Link
             to="/"
+            className="desktop-logo"
             style={{
               fontSize: '1.5rem',
               fontWeight: 'bold',
@@ -198,13 +234,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Nav - hanya ditampilkan di layar ≥768px */}
-          <nav
-            style={{
-              display: 'none',
-              gap: '1.5rem',
-            }}
-            className="desktop-nav"
-          >
+          <nav className="desktop-nav">
             <ul
               style={{
                 display: 'flex',
@@ -237,15 +267,57 @@ export default function Navigation() {
             </ul>
           </nav>
 
+          {/* Kontrol Mobile: Donate + Theme Toggle */}
+          <div className="mobile-controls">
+            <a
+              href={donateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.25rem',
+                background: '#dc3545',
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: '4px',
+                padding: '0.25rem 0.5rem',
+                textDecoration: 'none',
+                fontSize: '0.875rem',
+                fontWeight: 'bold',
+              }}
+            >
+              Donate
+              <img src={heart} alt="" style={{ width: '16px', height: '16px' }} />
+            </a>
+            <button
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '0.25rem',
+                borderRadius: '4px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginLeft: '0.5rem',
+              }}
+            >
+              <img
+                src={themeIcon}
+                alt=""
+                style={{ width: '20px', height: '20px', display: 'block' }}
+              />
+              <VisuallyHidden.Root>
+                {`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+              </VisuallyHidden.Root>
+            </button>
+          </div>
+
           {/* Social & Controls - desktop only */}
-          <div
-            style={{
-              display: 'none',
-              alignItems: 'center',
-              gap: '1rem',
-            }}
-            className="desktop-controls"
-          >
+          <div className="desktop-controls">
             <a
               href={linkedinUrl}
               target="_blank"
@@ -340,14 +412,6 @@ export default function Navigation() {
           <button
             onClick={() => setIsMenuOpen(true)}
             aria-label="Toggle navigation menu"
-            style={{
-              display: 'none',
-              background: 'none',
-              border: 'none',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              color: theme === 'light' ? '#000' : '#fff',
-            }}
             className="mobile-menu-button"
           >
             ☰
@@ -355,26 +419,54 @@ export default function Navigation() {
         </div>
       </header>
 
-      {/* CSS Responsif Inline (atau bisa dipindah ke file terpisah) */}
+      {/* CSS Responsif Inline */}
       <style>{`
-        @media (min-width: 768px) {
-          .desktop-nav {
-            display: flex !important;
-          }
-          .desktop-controls {
-            display: flex !important;
-          }
-        }
+  .desktop-nav,
+  .desktop-controls,
+  .desktop-logo {
+    display: none;
+  }
 
-        @media (max-width: 767px) {
-          .mobile-menu-button {
-            display: block !important;
-          }
-          nav, .desktop-controls {
-            display: none !important;
-          }
-        }
-      `}</style>
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .desktop-nav,
+    .desktop-controls,
+    .desktop-logo {
+      display: flex !important;
+    }
+
+    .desktop-controls {
+      align-items: center;
+      gap: 0.75rem; /* <-- JARAK ANTAR ITEM DI DESKTOP */
+    }
+
+    .mobile-controls,
+    .mobile-menu-button {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .mobile-menu-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: ${theme === 'light' ? '#000' : '#fff'};
+      margin-left: auto;
+      display: block !important;
+    }
+
+    .desktop-logo {
+      display: none !important;
+    }
+  }
+`}</style>
     </>
   );
 }

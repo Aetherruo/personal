@@ -132,7 +132,7 @@ export default function Work() {
           <img src={Diamond} alt="Diamond" style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} />‎Perakitan & Perawatan Komputer, Jaringan Komputer, Pemrograman & Otomasi Dasar, Administrasi Komputer & Jaringan
         </p>
         <p>
-          ● September 2020 ~ Mei 2024,
+          ● Juni 2020 ~ April 2024,
           Pondok Pesantren Darussalam Martapura<br/>
           Awwaliyyah 2 ~ Wustho 1 Putra<br/>
           <img src={Star} alt="Star" style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} />‎Menjabat sebagai salah satu Wakil Ketua Kelas dengan ±100 Santri
@@ -140,7 +140,7 @@ export default function Work() {
           <img src={Diamond} alt="Diamond" style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} />‎Administrasi Kelas, Pengambilan Keputusan, Tanggung Jawab, Inisiatif 
         </p>
         <p>
-          ● XXXX ~ Mei 2024,
+          ● Juli ~ Mei 2024,
           Pusat Kegiatan Belajar Masyarakat Harapan Baru<br/>
           Paket B<br/>
           <img src={Diamond} alt="Diamond" style={{ width: '16px', height: '16px', display: 'inline', margin: '0 4px 0 0' }} />‎Literasi Dasar, Kemampuan Belajar Mandiri, Disiplin & Tanggung Jawab Akademik
@@ -351,6 +351,12 @@ export default function Work() {
             <td>2026</td>
             <td>National Nutrition Research Nourish Competition 2026</td>
             <td>Institut Ilmu Kesehatan Nahdlatul Ulama Tuban </td>
+            <td>Participant</td>
+          </tr>
+          <tr>
+            <td>2026</td>
+            <td>National Essay Annual Islamic Student Competition</td>
+            <td>SMA Bintang Pelajar Islamic Boarding School </td>
             <td>Participant</td>
           </tr>
           {/* Tambahkan baris lain sesuai kebutuhan */}
